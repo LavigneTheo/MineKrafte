@@ -6,6 +6,9 @@
 #include "Renderer.h"
 #include "../gui/GuiRenderer.h"
 #include "../utils/algo/Perlin2D.h"
+#include "TimeTester.h"
+
+TimeTester* TimeTester::INSTANCE = nullptr;
 
 int main(void)
 {
@@ -79,5 +82,6 @@ int main(void)
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui::DestroyContext();
 	glfwTerminate();
+	TimeTester::getInstance()->save();
 	return 0;
 }

@@ -102,6 +102,9 @@
     <ClCompile Include="src\kernel\TimeTester.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\kernel\TimeTester.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vendor\glm\detail\_features.hpp">

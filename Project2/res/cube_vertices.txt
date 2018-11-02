@@ -43,3 +43,18 @@ unsigned int indices[] = {
 	mLeftThreshold = xStart * Chunk::WIDTH - VIEW_RANGE * Chunk::WIDTH;
 	mFrontThreshold = zStart * Chunk::DEPTH - VIEW_RANGE * Chunk::DEPTH;
 	mBackThreshold = (zStart + 1)* Chunk::DEPTH + VIEW_RANGE * Chunk::DEPTH;
+
+	struct ChunkPosition
+{
+	ChunkPosition(int x, int y) { mx = x; my = y; }
+	ChunkPosition() { mx = 0; my = 0; }
+	int mx, my;
+	int mChunkIndex;
+
+	bool operator==(const ChunkPosition &p) const
+	{
+		return mx == p.mx && my == p.my;
+	}
+
+	void print() { std::cout << "[" << mx << ", " << my << "]" << std::endl; }
+};

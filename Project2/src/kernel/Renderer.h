@@ -7,7 +7,6 @@ class Renderer {
 private:
 	EntityManager m_entity_manager;
 	TerrainManager m_terrain_manager;
-	TimeTester tester;
 public:
 	Renderer();
 	~Renderer();

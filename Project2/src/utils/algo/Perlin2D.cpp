@@ -27,14 +27,14 @@ void Perlin2D::generateHashTable() {
 float Perlin2D::getNoiseAt(const Vec2f& v) {
 	int table_size_mask = mSize - 1;
 
-	int xi0 = ((int)std::floor(v.m_x)) & table_size_mask;
-	int yi0 = ((int)std::floor(v.m_y)) & table_size_mask;
+	int xi0 = ((int)std::floor(v.mx)) & table_size_mask;
+	int yi0 = ((int)std::floor(v.my)) & table_size_mask;
 
 	int xi1 = (xi0 + 1) & table_size_mask;
 	int yi1 = (yi0 + 1) & table_size_mask;
 
-	float tx = v.m_x - ((int)std::floor(v.m_x));
-	float ty = v.m_y - ((int)std::floor(v.m_y));
+	float tx = v.mx - ((int)std::floor(v.mx));
+	float ty = v.my - ((int)std::floor(v.my));
 
 	float ru = smoothstep(tx);
 	float rv = smoothstep(ty);
@@ -66,8 +66,8 @@ float Perlin2D::getFractalSumAt(const Vec2f& pos) {
 
 	float xRatio = 1.f / mSize;
 	float yRatio = 1.f / mSize;
-	float x = pos.m_x * xRatio * mFrequency;
-	float y = pos.m_y * yRatio * mFrequency;
+	float x = pos.mx * xRatio * mFrequency;
+	float y = pos.my * yRatio * mFrequency;
 	
 	for (int l = 0; l < mLayers; l++) {
 		cumAmplitude += amplitude;

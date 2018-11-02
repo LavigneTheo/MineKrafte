@@ -1,4 +1,87 @@
-﻿  Source.cpp
+﻿  Mesh.cpp
+  Model.cpp
+  TerrainMesh.cpp
+  TextureCache.cpp
+c:\code\engine\open_gl\project2\src\buffer\texturecache.cpp(56): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  GuiRenderer.cpp
 c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
   c:\code\engine\open_gl\dep\inc\glfw3.h(98): note: see previous definition of 'APIENTRY'
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.h(65): warning C4018: '<': signed/unsigned mismatch
+c:\code\engine\open_gl\project2\src\gui\guirenderer.cpp(17): warning C4018: '<': signed/unsigned mismatch
+c:\code\engine\open_gl\project2\src\gui\guirenderer.cpp(27): warning C4018: '<': signed/unsigned mismatch
+  Utils.cpp
+  Widgets.cpp
+c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  c:\code\engine\open_gl\dep\inc\glfw3.h(98): note: see previous definition of 'APIENTRY'
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.h(65): warning C4018: '<': signed/unsigned mismatch
+c:\code\engine\open_gl\project2\src\gui\widgets.cpp(63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\gui\widgets.cpp(64): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\gui\widgets.cpp(65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Camera.cpp
+c:\code\engine\open_gl\project2\src\kernel\camera.cpp(18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\kernel\camera.cpp(20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\kernel\camera.cpp(22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\kernel\camera.cpp(24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\kernel\camera.cpp(26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\kernel\camera.cpp(28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\kernel\camera.cpp(30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\kernel\camera.cpp(32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Renderer.cpp
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.h(65): warning C4018: '<': signed/unsigned mismatch
+  Source.cpp
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.h(65): warning C4018: '<': signed/unsigned mismatch
+c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
+  c:\code\engine\open_gl\dep\inc\glfw3.h(98): note: see previous definition of 'APIENTRY'
+  TimeTester.cpp
+c:\code\engine\open_gl\project2\src\kernel\timetester.cpp(7): warning C4018: '<': signed/unsigned mismatch
+c:\code\engine\open_gl\project2\src\kernel\timetester.cpp(29): warning C4018: '<': signed/unsigned mismatch
+  TimeTester.h
+  Window.cpp
+  EntityManager.cpp
+  TerrainManager.cpp
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.h(65): warning C4018: '<': signed/unsigned mismatch
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(24): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(73): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(101): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(102): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(108): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(112): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(118): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(119): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(124): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.cpp(130): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+  BaseProgram.cpp
+  ShaderProgram.cpp
+  TerrainShader.cpp
+  BlockBank.cpp
+  Chunk.cpp
+c:\code\engine\open_gl\project2\src\manager\terrainmanager.h(65): warning C4018: '<': signed/unsigned mismatch
+c:\code\engine\open_gl\project2\src\terrain\chunk.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\terrain\chunk.cpp(9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\code\engine\open_gl\project2\src\terrain\chunk.cpp(151): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\code\engine\open_gl\project2\src\terrain\chunk.cpp(152): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  Perlin2D.cpp
+c:\code\engine\open_gl\project2\src\utils\algo\perlin2d.cpp(19): warning C4018: '<': signed/unsigned mismatch
+c:\code\engine\open_gl\project2\src\utils\algo\perlin2d.cpp(72): warning C4018: '<': signed/unsigned mismatch
+c:\code\engine\open_gl\project2\src\utils\algo\perlin2d.cpp(75): warning C4305: '*=': truncation from 'double' to 'float'
+c:\code\engine\open_gl\project2\src\utils\algo\perlin2d.cpp(97): warning C4018: '<': signed/unsigned mismatch
+c:\code\engine\open_gl\project2\src\utils\algo\perlin2d.cpp(100): warning C4305: '*=': truncation from 'double' to 'float'
+c:\code\engine\open_gl\project2\src\utils\algo\perlin2d.cpp(120): warning C4018: '<': signed/unsigned mismatch
+  Vec2f.cpp
+  glm.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw.cpp
+  imgui_impl_opengl3.cpp
+  imgui_widgets.cpp
+  stb.cpp
+  Generating Code...
+Debug\TimeTester.obj : warning LNK4042: object specified more than once; extras ignored
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\code\engine\open_gl\Debug\vc120.pdb'; linking object as if no debug info
   Project2.vcxproj -> C:\code\engine\open_gl\Debug\Project2.exe

@@ -1,12 +1,17 @@
 #include "Chunk.h"
 #include "../manager/TerrainManager.h"
-#include <random>
+
 
 TerrainManager* Chunk::mTerrainManager = nullptr;
 
-Chunk::Chunk(int x, int z) {
-	mPosition.x = x;
-	mPosition.y = z;
+Chunk::Chunk(int& x, int& z) {
+	mPosition.mx = x;
+	mPosition.my = z;
+	
+	fillBumpy();
+}
+
+Chunk:: Chunk(const Vec2f v) : mPosition(v) {
 
 	fillBumpy();
 }
@@ -15,20 +20,15 @@ Chunk::~Chunk() {
 	
 }
 
-glm::vec2 Chunk::get_position() const {
-	return mPosition;
-}
-
 void Chunk::fillBumpy() {
 	
-	for (int y = 0; y < Chunk::HEIGHT; y++) {
-		for (int x = 0; x < Chunk::WIDTH; x++) {
-			
-			for (int z = 0; z < Chunk::DEPTH; z++) {
-				float value = mTerrainManager->get2DNoiseAt(Vec2f(
-					x + mPosition.x * WIDTH,
-					z + mPosition.y * DEPTH
-				)) *  255;
+	for (int x = 0; x < Chunk::WIDTH; x++) {
+		for (int z = 0; z < Chunk::DEPTH; z++) {
+			float value = mTerrainManager->get2DNoiseAt(Vec2f(
+				x + mPosition.mx * WIDTH,
+				z + mPosition.my * DEPTH
+			)) * 255;
+			for (int y = 0; y < Chunk::HEIGHT; y++) {
 				if (y > (int)value) {
 					mBlocks.push_back(Block(AIR, mBlockBank));
 				}
@@ -37,7 +37,7 @@ void Chunk::fillBumpy() {
 			}
 		}
 	}
-
+	
 	buildMesh();
 }
 
@@ -146,16 +146,17 @@ void insert(float* faceVertices, TexturePosition& texCoord, const int& xOffset, 
 
 void Chunk::tryAddFace(const unsigned int& x, const unsigned int& y, const unsigned int& z, std::vector<float>& vertices, std::vector<unsigned int>& indices, unsigned int& indicesCount) {
 	Block b = getBlock(x, y, z);
-	int xOffset = mPosition.x * WIDTH + x;
-	int zOffest = mPosition.y * DEPTH + z;
+	
+	int xOffset = mPosition.mx * WIDTH + x;
+	int zOffest = mPosition.my * DEPTH + z;
 	
 	if (b.getData().solid) {
 		TexturePosition texCoord = mBlockBank->getTextureCoord(b.getData().mType, SIDE);
 		
 		//Right
 		if (x + 1 == WIDTH) {
-			Chunk* c = mTerrainManager->getChunkAt(Vec2(mPosition.x + 1, mPosition.y));
-			if (c == nullptr || !c->isSolidAt(0, y, z))
+			Chunk* c = mTerrainManager->getChunkAt(Vec2f(mPosition.mx + 1, mPosition.my));
+			if (c != nullptr && !c->isSolidAt(0, y, z))
 				insert(rightFace, texCoord, xOffset, y, zOffest, vertices, indices, indicesCount);
 
 		} else if (!isSolidAt(x + 1, y, z)) {
@@ -164,8 +165,8 @@ void Chunk::tryAddFace(const unsigned int& x, const unsigned int& y, const unsig
 
 		//Left
 		if (x == 0) {
-			Chunk* c = mTerrainManager->getChunkAt(Vec2(mPosition.x - 1, mPosition.y));
-			if (c == nullptr || !c->isSolidAt(WIDTH - 1, y, z))
+			Chunk* c = mTerrainManager->getChunkAt(Vec2f(mPosition.mx - 1, mPosition.my));
+			if (c != nullptr && !c->isSolidAt(WIDTH - 1, y, z))
 				insert(leftFace, texCoord, xOffset, y, zOffest, vertices, indices, indicesCount);
 
 		} else if (!isSolidAt(x - 1, y, z)) {
@@ -174,8 +175,8 @@ void Chunk::tryAddFace(const unsigned int& x, const unsigned int& y, const unsig
 
 		//Front
 		if (z == 0) {
-			Chunk* c = mTerrainManager->getChunkAt(Vec2(mPosition.x, mPosition.y - 1));
-			if (c == nullptr || !c->isSolidAt(x, y, DEPTH - 1))
+			Chunk* c = mTerrainManager->getChunkAt(Vec2f(mPosition.mx, mPosition.my - 1));
+			if (c != nullptr &&!c->isSolidAt(x, y, DEPTH - 1))
 				insert(frontFace, texCoord, xOffset, y, zOffest, vertices, indices, indicesCount);
 
 		} else if (!isSolidAt(x, y, z - 1)) {
@@ -185,8 +186,8 @@ void Chunk::tryAddFace(const unsigned int& x, const unsigned int& y, const unsig
 
 		//Back
 		if (z == DEPTH - 1) {
-			Chunk* c = mTerrainManager->getChunkAt(Vec2(mPosition.x, mPosition.y + 1));
-			if (c == nullptr || !c->isSolidAt(x, y, 0))
+			Chunk* c = mTerrainManager->getChunkAt(Vec2f(mPosition.mx, mPosition.my + 1));
+			if (c != nullptr && !c->isSolidAt(x, y, 0))
 				insert(backFace, texCoord, xOffset, y, zOffest, vertices, indices, indicesCount);
 
 		} else if (!isSolidAt(x, y, z + 1)) {
@@ -197,7 +198,9 @@ void Chunk::tryAddFace(const unsigned int& x, const unsigned int& y, const unsig
 		if (y + 1 == HEIGHT || !isSolidAt(x, y + 1, z)) {
 			insert(topFace, texCoord, xOffset, y, zOffest, vertices, indices, indicesCount);
 		}
-		if (y == 0 || !isSolidAt(x, y - 1, z)) {
+		if (y == 0)
+			return;
+		if (!isSolidAt(x, y - 1, z)) {
 			insert(bottomFace, texCoord, xOffset, y, zOffest, vertices, indices, indicesCount);
 		}
 	}
@@ -208,9 +211,8 @@ void Chunk::buildMesh() {
 
 	std::vector<float> vertices;
 	std::vector<unsigned int> indices;
-
+	
 	unsigned int indicesCount = 0;
-
 	for (unsigned int y = 0; y < Chunk::HEIGHT; y++) {
 		for (unsigned int x = 0; x < Chunk::WIDTH; x++) {
 			for (unsigned int z = 0; z < Chunk::DEPTH; z++) {
@@ -218,7 +220,7 @@ void Chunk::buildMesh() {
 			}
 		}
 	}
-
+	
 	
 	TerrainManager::vertexCount += indices.size() - mMeshInfo.mSize;
 	
@@ -247,8 +249,8 @@ void Chunk::loadMeshData(const std::vector<float>& data, const std::vector<unsig
 	glBindVertexArray(0);
 }
 
-void Chunk::drawChunk() {
-
+void Chunk::drawChunk() const {
+	
 	glBindVertexArray(mMeshInfo.mVao);
 
 	glEnableVertexAttribArray(0);
@@ -261,6 +263,7 @@ void Chunk::drawChunk() {
 	glDisableVertexAttribArray(1);
 
 	glBindVertexArray(0);
+	
 }
 
 void Chunk::freeChunk() {

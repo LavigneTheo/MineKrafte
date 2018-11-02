@@ -7,20 +7,20 @@
 
 class Vec2f {
 public:
-	float m_x, m_y;
-	Vec2f(const float& x, const float& y) : m_x(x), m_y(y) {}
-	Vec2f() : m_x(0), m_y(0) {}
+	float mx, my;
+	Vec2f(const float& x, const float& y) : mx(x), my(y) {}
+	Vec2f() : mx(0), my(0) {}
 
-	float length() { return sqrtf(m_x * m_x + m_y * m_y); }
+	float length() { return sqrtf(mx * mx + my * my); }
 	void normalize();
 
 	void print() const;
 
 	Vec2f* operator*(const float& scalar) {
-		m_x *= scalar; m_y *= scalar;
+		mx *= scalar; my *= scalar;
 		return this;
 	}
 	void operator+(const float& scalar) {
-		m_x += scalar; m_y += scalar;
+		mx += scalar; my += scalar;
 	}
 };

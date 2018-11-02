@@ -153,6 +153,7 @@
     <ClCompile Include="src\kernel\Camera.cpp" />
     <ClCompile Include="src\kernel\Renderer.cpp" />
     <ClCompile Include="src\kernel\Source.cpp" />
+    <ClCompile Include="src\kernel\TimeTester.cpp" />
     <ClCompile Include="src\kernel\TimeTester.h" />
     <ClCompile Include="src\kernel\Window.cpp" />
     <ClCompile Include="src\manager\EntityManager.cpp" />

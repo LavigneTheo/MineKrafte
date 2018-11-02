@@ -36,7 +36,7 @@ public:
 
 	float smoothstep(const float& raw_t) { return raw_t * raw_t * (3 - 2 * raw_t); }
 	float lerp(const float xLow, const float xHigh, const float t) { return xLow * (1 - t) + xHigh * t; }
-	float dot(const Vec2f& v1, const Vec2f& v2) { return v1.m_x * v2.m_x + v1.m_y * v2.m_y; }
+	float dot(const Vec2f& v1, const Vec2f& v2) { return v1.mx * v2.mx + v1.my * v2.my; }
 	int hash(const int &x, const int &y) const { return mPermutationTable[mPermutationTable[x] + y]; }
 
 };
